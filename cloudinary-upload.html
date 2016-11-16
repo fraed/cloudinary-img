@@ -1,0 +1,34 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`cloudinary-upload`
+Polymer wrapper for cloudinary saas.
+
+@demo demo/index.html 
+-->
+
+<dom-module id="cloudinary-upload">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'cloudinary-upload',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'cloudinary-upload',
+        },
+      },
+
+    });
+  </script>
+</dom-module>
