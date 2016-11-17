@@ -1,5 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="cloudinary.html">
+<link rel="import" href="behaviors/upload.html">
 
 <!--
 `cloudinary-upload`
@@ -15,21 +17,32 @@ Polymer wrapper for cloudinary saas.
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]</h2>
+
+    <paper-button disabled$="[[!readyForUpload]]" raised on-tap="_openUploadWidgetHandler">
+      Yeah, Upload Widget
+    </paper-button>
+
   </template>
 
   <script>
+
     Polymer({
 
       is: 'cloudinary-upload',
 
+      behaviors: [
+        CloudinaryBehavior.Upload
+      ],
+
       properties: {
-        prop1: {
-          type: String,
-          value: 'cloudinary-upload',
-        },
+
       },
 
+      _openUploadWidgetHandler: function(e) {
+        this.openUploadWidget();
+      }
+
     });
+
   </script>
 </dom-module>
