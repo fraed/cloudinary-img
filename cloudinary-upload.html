@@ -2,6 +2,7 @@
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="cloudinary.html">
 <link rel="import" href="behaviors/upload.html">
+<link rel="import" href="cloudinary-img.html">
 
 <!--
 `cloudinary-upload`
@@ -23,10 +24,6 @@ Polymer wrapper for cloudinary saas.
         padding: 0;
       }
 
-      img {
-        max-width: 100%;
-      }
-
     </style>
 
     <paper-button disabled$="[[!readyForUpload]]" raised on-tap="_openUploadWidgetHandler">
@@ -36,7 +33,7 @@ Polymer wrapper for cloudinary saas.
     <ul>
       <template is="dom-repeat" items="{{result}}">
         <li>
-          <img src$="[[item.secure_url]]" alt="">
+          <cloudinary-img cloud-name="[[cloudName]]" path="[[item.path]]" alt="Testing ALT Attribute"></cloudinary-img>
         </li>
       </template>
     </ul>
@@ -53,7 +50,7 @@ Polymer wrapper for cloudinary saas.
         CloudinaryBehavior.Upload
       ],
 
-      _openUploadWidgetHandler: function(e) {
+      _openUploadWidgetHandler: function() {
         this.openUploadWidget();
       }
 
