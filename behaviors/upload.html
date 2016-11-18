@@ -18,6 +18,15 @@
         type: Object
       },
 
+      result: {
+      	type: Array,
+      	notfiy: true
+      },
+
+			error: {
+				type: Object
+			},
+
       readyForUpload: {
       	type: Boolean,
       	computed: '_checkRequiredAttributes(cloudName, uploadPreset)'
@@ -32,8 +41,9 @@
       myUploadOptions.upload_preset = this.uploadPreset;
 
       cloudinary.openUploadWidget(myUploadOptions, function(error, result) {
-        console.log(error, result);
-      });
+        this.result = result;
+        this.error = error;
+      }.bind(this));
     },
 
     _checkRequiredAttributes: function(cloudName, uploadPreset) {

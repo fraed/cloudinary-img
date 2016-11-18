@@ -13,14 +13,33 @@ Polymer wrapper for cloudinary saas.
 <dom-module id="cloudinary-upload">
   <template>
     <style>
+
       :host {
         display: block;
       }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
     </style>
 
     <paper-button disabled$="[[!readyForUpload]]" raised on-tap="_openUploadWidgetHandler">
       Yeah, Upload Widget
     </paper-button>
+
+    <ul>
+      <template is="dom-repeat" items="{{result}}">
+        <li>
+          <img src$="[[item.secure_url]]" alt="">
+        </li>
+      </template>
+    </ul>
 
   </template>
 
@@ -33,10 +52,6 @@ Polymer wrapper for cloudinary saas.
       behaviors: [
         CloudinaryBehavior.Upload
       ],
-
-      properties: {
-
-      },
 
       _openUploadWidgetHandler: function(e) {
         this.openUploadWidget();
