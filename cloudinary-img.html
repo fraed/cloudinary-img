@@ -1,0 +1,85 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="cloudinary.html">
+
+<dom-module id="cloudinary-img">
+
+	<template>
+    <style>
+
+      :host {
+        display: inline-block;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+    </style>
+
+    <img src$="[[src]]" alt$="[[alt]]" sizes$="[[sizes]]">
+  </template>
+
+  <script>
+
+    Polymer({
+
+      is: 'cloudinary-img',
+
+      ready: function() {
+
+      },
+
+      behaviors: [
+        
+      ],
+
+      properties: {
+      	cloudinaryApi: {
+      		type: String,
+      		readOnly: true,
+      		value: '//res.cloudinary.com/'
+      	},
+
+      	cloudName: {
+      		type: String
+      	},
+
+      	path: {
+      		type: String
+      	},
+
+      	transformationParams: {
+      		type: String,
+      		value: ''
+      	},
+
+      	alt: {
+      		type: String
+      	},
+
+      	sizes: {
+      		type: String
+      	},
+
+      	src: {
+      		type: String,
+      		notify: true,
+      		computed: '_computeSrc(cloudinaryApi, cloudName, path, transformationParams)'
+      	}
+      },
+
+      _computeSrc: function(cloudinaryApi, cloudName, path, transformationParams) {
+      	var src = cloudinaryApi + cloudName;
+
+      	if (transformationParams) {
+      		src += '/' + transformationParams;
+      	}
+
+      	return src + '/' + path;
+      }
+
+    });
+
+  </script>
+
+</dom-module>
