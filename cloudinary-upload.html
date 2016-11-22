@@ -26,17 +26,45 @@ Polymer wrapper for cloudinary saas.
 
     </style>
 
-    <paper-button disabled$="[[!readyForUpload]]" raised on-tap="_openUploadWidgetHandler">
-      Yeah, Upload Widget
-    </paper-button>
+    <div class="uploading-demo">
+      <h2>Uploading Box</h2>
+      <paper-button disabled$="[[!readyForUpload]]" raised on-tap="_openUploadWidgetHandler">
+        Yeah, Upload Widget
+      </paper-button>
 
-    <ul>
-      <template is="dom-repeat" items="{{result}}">
+      <ul>
+        <template is="dom-repeat" items="{{result}}">
+          <li>
+            <h3>Just the image</h3>
+            <cloudinary-img cloud-name="[[cloudName]]" path="[[item.path]]" alt="Testing ALT Attribute"></cloudinary-img>
+          </li>
+          <li>
+            <h3>Transformation 50px width</h3>
+            <cloudinary-img cloud-name="[[cloudName]]" path="[[item.path]]" transformation-params="w_50" alt="Testing ALT Attribute"></cloudinary-img>
+          </li>
+        </template>
+      </ul>
+    </div>
+
+    <div class="static-examples">
+      <ul>
         <li>
-          <cloudinary-img cloud-name="[[cloudName]]" path="[[item.path]]" alt="Testing ALT Attribute"></cloudinary-img>
+          <h3>Rounded Corners</h3>
+          <cloudinary-img cloud-name="[[cloudName]]" path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg" transformation-params="r_10" alt="Testing ALT Attribute"></cloudinary-img>
         </li>
-      </template>
-    </ul>
+        <li>
+          <h3>Face cropping (right without g_face)</h3>
+          <cloudinary-img cloud-name="[[cloudName]]" path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg" transformation-params="w_120,h_120,c_crop,g_face" alt="Testing ALT Attribute"></cloudinary-img>
+          <cloudinary-img cloud-name="[[cloudName]]" path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg" transformation-params="w_120,h_120,c_crop" alt="Testing ALT Attribute"></cloudinary-img>
+        </li>
+        <li>
+          <h3>Auto responsive</h3>
+          <div style="width: 50%;">
+            <cloudinary-img cloud-name="[[cloudName]]" path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg" transformation-params="w_auto:100:400,dpr_auto" sizes="50vw" alt="Testing ALT Attribute"></cloudinary-img>
+          </div>
+        </li>
+      </ul>
+    </div>   
 
   </template>
 
