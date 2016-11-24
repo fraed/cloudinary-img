@@ -75,6 +75,10 @@
       },
 
       _computeSrc: function(cloudinaryApi, cloudName, path, transformationParams, fileFormat) {
+        if (!path) {
+          return '';
+        }
+
       	var src = cloudinaryApi + cloudName;
 
       	if (transformationParams) {
