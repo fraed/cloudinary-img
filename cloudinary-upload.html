@@ -63,6 +63,13 @@ Polymer wrapper for cloudinary saas.
             <cloudinary-img cloud-name="[[cloudName]]" path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg" transformation-params="w_auto:100:400,dpr_auto" sizes="50vw" alt="Testing ALT Attribute"></cloudinary-img>
           </div>
         </li>
+        <li>
+          <h3>Format Conversion (left .png, right .jpg)</h3>
+          <div style="background: black; padding: 5px;">
+            <cloudinary-img cloud-name="[[cloudName]]" path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg" transformation-params="w_150,r_25" file-format="png" alt="Testing ALT Attribute"></cloudinary-img>&nbsp;
+            <cloudinary-img cloud-name="[[cloudName]]" path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg" transformation-params="w_150,r_25" alt="Testing ALT Attribute"></cloudinary-img>
+          </div>
+        </li>
       </ul>
     </div>
 

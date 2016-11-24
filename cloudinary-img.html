@@ -62,21 +62,32 @@
       		value: '100vw'
       	},
 
+        fileFormat: {
+          type: String,
+          value: '' // http://cloudinary.com/documentation/image_transformations#image_format_conversion
+        },
+
       	src: {
       		type: String,
       		notify: true,
-      		computed: '_computeSrc(cloudinaryApi, cloudName, path, transformationParams)'
+      		computed: '_computeSrc(cloudinaryApi, cloudName, path, transformationParams, fileFormat)'
       	}
       },
 
-      _computeSrc: function(cloudinaryApi, cloudName, path, transformationParams) {
+      _computeSrc: function(cloudinaryApi, cloudName, path, transformationParams, fileFormat) {
       	var src = cloudinaryApi + cloudName;
 
       	if (transformationParams) {
       		src += '/' + transformationParams;
       	}
 
-      	return src + '/' + path;
+        src = src + '/' + path;
+
+        if (fileFormat) {
+          src = src.replace(/\.[^\.]+$/, '.' + fileFormat);
+        }
+
+      	return src;
       }
 
     });
