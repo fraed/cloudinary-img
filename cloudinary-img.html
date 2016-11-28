@@ -7,19 +7,13 @@
     <style>
 
       :host {
-        display: inline-block;
-      }
-
-      :host[block] {
-        display: block;
+        display: var(--cloudinary-host-display, inline-block);
+        @apply(--cloudinary-host);
       }
 
       img {
         max-width: 100%;
-      }
-
-      :host[block] img {
-        display: block;
+        display: var(--cloudinary-host-display, inline-block);      }
       }
 
     </style>

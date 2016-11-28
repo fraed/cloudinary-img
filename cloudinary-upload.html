@@ -19,6 +19,10 @@ Polymer wrapper for cloudinary saas.
         display: block;
       }
 
+      .img-block {
+        --cloudinary-host-display: block;
+      }
+
       ul {
         list-style-type: none;
         padding: 0;
@@ -50,7 +54,7 @@ Polymer wrapper for cloudinary saas.
       <ul>
         <li>
           <h3>Block Element</h3>
-          <cloudinary-img block cloud-name="[[cloudName]]" path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg" transformation-params="" alt="Testing ALT Attribute"></cloudinary-img>
+          <cloudinary-img class="img-block" cloud-name="[[cloudName]]" path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg" transformation-params="" alt="Testing ALT Attribute"></cloudinary-img>
         </li>
         <li>
           <h3>Rounded Corners</h3>
