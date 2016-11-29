@@ -78,6 +78,13 @@ Polymer wrapper for cloudinary saas.
             <cloudinary-img cloud-name="[[cloudName]]" path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg" transformation-params="w_150,r_25" alt="Testing ALT Attribute"></cloudinary-img>
           </div>
         </li>
+        <li>
+          <h3>Computeable Height</h3>
+          <div>
+            <cloudinary-img bind-load-event cloud-name="[[cloudName]]" path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg" transformation-params="w_300" alt="Testing ALT Attribute" computable-height="{{computeableHeight}}"></cloudinary-img>
+            <div style="font-size: 30px; color: red;">[[hint]]</div>
+          </div>
+        </li>
       </ul>
     </div>
 
@@ -92,6 +99,25 @@ Polymer wrapper for cloudinary saas.
       behaviors: [
         CloudinaryBehavior.Upload
       ],
+
+      properties: {
+
+        computeableHeight: {
+          type: Boolean,
+          observer: '_computableHeightHint'
+        }
+
+      },
+
+      _computableHeightHint: function(computeableHeight) {
+        //debugger;
+        if (computeableHeight) {
+          this.set('hint', 'Height computable');
+          return;
+        }
+
+        this.set('hint', 'Height not computable');
+      },
 
       _openUploadWidgetHandler: function() {
         this.openUploadWidget();
