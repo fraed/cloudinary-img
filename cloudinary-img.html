@@ -35,7 +35,7 @@
           }.bind(this));
         }
 
-        if (this.fallbackImg) {
+        if (this.enableFallbackImage || this.fallbackImg) {
           var imgElement = this.$.cloudinaryImg;
 
           imgElement.addEventListener('error', function() {
@@ -56,6 +56,10 @@
       	},
 
         bindLoadEvent: {
+          type: Boolean
+        },
+
+        enableFallbackImg: { // useful for asynchronous fallbackImg Path
           type: Boolean
         },
 
