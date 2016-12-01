@@ -34,6 +34,14 @@
             this.set('computableHeight', true);
           }.bind(this));
         }
+
+        if (this.fallbackImg) {
+          var imgElement = this.$.cloudinaryImg;
+
+          imgElement.addEventListener('error', function() {
+            imgElement.src = this.fallbackImg;
+          }.bind(this));
+        }
       },
 
       properties: {
@@ -59,6 +67,10 @@
       	path: {
       		type: String
       	},
+
+        fallbackImg: {
+          type: String
+        },
 
       	transformationParams: {
       		type: String,
