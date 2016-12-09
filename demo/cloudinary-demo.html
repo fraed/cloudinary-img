@@ -6,13 +6,13 @@
 <link rel="import" href="../cloudinary-img.html">
 
 <!--
-`cloudinary-upload`
+`cloudinary-demo`
 Polymer wrapper for cloudinary saas.
 
 @demo demo/index.html
 -->
 
-<dom-module id="cloudinary-upload">
+<dom-module id="cloudinary-demo">
   <template>
     <style>
 
@@ -32,7 +32,7 @@ Polymer wrapper for cloudinary saas.
     </style>
 
     <div class="uploading-demo">
-      <h2>Uploading Box (please change Cloudname and Uploadpreset to your own configuration values)</h2>
+      <h2>Uploading Box (please change Cloudname and Uploadpreset to upload in your cloudinary account)</h2>
       <div>
         <paper-input placeholder="Cloudname" label="Cloudname" value="{{cloudName}}"></paper-input>
       </div>
@@ -102,7 +102,7 @@ Polymer wrapper for cloudinary saas.
 
     Polymer({
 
-      is: 'cloudinary-upload',
+      is: 'cloudinary-demo',
 
       behaviors: [
         CloudinaryBehavior.Upload
