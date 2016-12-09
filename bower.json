@@ -1,7 +1,16 @@
 {
   "name": "cloudinary-upload",
-  "description": "Polymer wrapper for cloudinary saas.",
-  "main": "cloudinary-upload.html",
+  "version": "0.1",
+  "authors": [
+    "J. Winterfeld"
+  ],
+  "description": "Polymer wrapper for cloudinary image service.",
+  "main": "cloudinary-img.html",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "cloudinary"
+  ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
     "paper-button": "PolymerElements/paper-button#^1.0.14",

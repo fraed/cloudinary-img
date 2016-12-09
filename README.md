@@ -1,7 +1,9 @@
-# \<cloudinary-upload\>
+# \<cloudinary-img\>
 
-Polymer wrapper for cloudinary saas.
+Polymer wrapper for cloudinary image service. http://cloudinary.com/
 
-## Install the Polymer-CLI
+## Installation
+bower install cloudinary-img
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
+## Usage
+Checkout demo file: demo/cloudinary-demo.html
