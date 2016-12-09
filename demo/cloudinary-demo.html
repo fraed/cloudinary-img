@@ -1,8 +1,8 @@
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="cloudinary.html">
-<link rel="import" href="behaviors/upload.html">
-<link rel="import" href="cloudinary-img.html">
+<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../../paper-button/paper-button.html">
+<link rel="import" href="../cloudinary.html">
+<link rel="import" href="../behaviors/upload.html">
+<link rel="import" href="../cloudinary-img.html">
 
 <!--
 `cloudinary-upload`
@@ -100,6 +100,10 @@ Polymer wrapper for cloudinary saas.
         CloudinaryBehavior.Upload
       ],
 
+      observers: [
+        '_resultChanged(result)'
+      ],
+
       properties: {
 
         computeableHeight: {
@@ -107,6 +111,10 @@ Polymer wrapper for cloudinary saas.
           observer: '_computableHeightHint'
         }
 
+      },
+
+      _resultChanged: function(result) {
+        console.log(result); // upload object
       },
 
       _computableHeightHint: function(computeableHeight) {
