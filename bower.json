@@ -1,8 +1,8 @@
 {
   "name": "cloudinary-upload",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "authors": [
-    "J. Winterfeld"
+    "Jan Winterfeld"
   ],
   "description": "Polymer wrapper for cloudinary image service.",
   "main": "cloudinary-img.html",
