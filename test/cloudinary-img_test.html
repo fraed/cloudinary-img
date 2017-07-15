@@ -4,25 +4,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>cloudinary-upload test</title>
+    <title>cloudinary-img test</title>
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
 
-    <link rel="import" href="../cloudinary-upload.html">
+    <link rel="import" href="../cloudinary-img.html">
   </head>
   <body>
     <test-fixture id="basic">
       <template>
-        <cloudinary-upload></cloudinary-upload>
+        <cloudinary-img></cloudinary-img>
       </template>
     </test-fixture>
 
     <script>
-      suite('cloudinary-upload', function() {
+      suite('cloudinary-img', function() {
         test('instantiating the element works', function() {
           var element = fixture('basic');
-          assert.equal(element.is, 'cloudinary-upload');
+          assert.equal(element.sizes, '100vw');
         });
       });
     </script>
