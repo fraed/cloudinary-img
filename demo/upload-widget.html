@@ -1,0 +1,86 @@
+<link rel="import" href="../../polymer/polymer-element.html">
+
+<link rel="import" href="../../paper-button/paper-button.html">
+<link rel="import" href="../../paper-input/paper-input.html">
+
+<link rel="import" href="../behaviors/upload.html">
+<link rel="import" href="../cloudinary-img.html">
+
+<dom-module id="upload-widget">
+
+	<template>
+    <custom-style>
+      <style is="custom-style">
+        ul {
+          list-style-type: none;
+          padding: 0;
+        }
+      </style>
+    </custom-style>
+
+    <div class="uploading-demo">
+      <h2>Uploading Box (please change Cloudname and Upload Preset or spam my account)</h2>
+      <div>
+        <paper-input placeholder="Cloudname" label="Cloudname" value="{{cloudName}}"></paper-input>
+      </div>
+      <div>
+        <paper-input placeholder="Upload Preset" label="Upload Preset" value="{{uploadPreset}}"></paper-input>
+      </div>
+      <div style="margin-top: 1em; margin-bottom: 4em;">
+        <paper-button disabled$="[[!readyForUpload]]" raised on-tap="_openUploadWidgetHandler">Open Upload Widget</paper-button>
+      </div>
+      <ul>
+        <dom-repeat items="{{result}}">
+          <template>
+            <li>
+              <h3>The image</h3>
+              <cloudinary-img cloud-name="[[cloudName]]" path="[[item.path]]" alt="Testing ALT Attribute"></cloudinary-img>
+            </li>
+            <li>
+              <h3>Transformation 50px width</h3>
+              <cloudinary-img cloud-name="[[cloudName]]" path="[[item.path]]" transformation-params="w_50" alt="Testing ALT Attribute"></cloudinary-img>
+            </li>
+          </template>
+        </dom-repeat>
+      </ul>
+    </div>
+  </template>
+
+  <script>
+
+    class UploadWidget extends Polymer.mixinBehaviors([CloudinaryBehavior.Upload], Polymer.Element) {
+
+      static get is() {return 'upload-widget'}
+
+      static get properties() {
+        return {
+          cloudName: {
+            type: String,
+            value: 'euphorika'
+          },
+
+          uploadPreset: {
+            type: String,
+            value: 'dnrga4xz'
+          }
+        }
+      }
+
+      constructor() {
+        super();
+      }
+
+      _resultChanged(result) {
+        console.log(result); // upload object - check your upload result array
+      }
+
+      _openUploadWidgetHandler() {
+        this.openUploadWidget();
+      }
+
+    }
+
+    window.customElements.define(UploadWidget.is, UploadWidget);
+  </script>
+
+</dom-module>

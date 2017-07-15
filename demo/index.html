@@ -11,18 +11,125 @@
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="cloudinary-demo.html">
 
-    <style is="custom-style" include="demo-pages-shared-styles">
-    </style>
+    <link rel="import" href="../cloudinary-img.html">
+    <link rel="import" href="../behaviors/upload.html">
+
+    <link rel="import" href="upload-widget.html">
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+        .img-block {
+          --cloudinary-host-display: block;
+        }
+      </style>
+    </custom-style>
   </head>
-  <body>
+  <body unresolved>
     <div class="vertical-section-container centered">
-      <h3>Basic cloudinary-upload demo</h3>
+      <h3>Upload Widget</h3>
       <demo-snippet>
         <template>
-          <cloudinary-demo></cloudinary-demo>
+          <upload-widget></upload-widget>
         </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Block Element</h3>
+      <demo-snippet>
+        <template>
+          <cloudinary-img
+            class="img-block"
+            cloud-name="euphorika"
+            path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg"
+            transformation-params=""
+            alt="Testing ALT Attribute"></cloudinary-img>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Rounded Corners</h3>
+      <demo-snippet>
+        <template>
+          <cloudinary-img
+            cloud-name="euphorika"
+            path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg"
+            transformation-params="r_10"
+            alt="Testing ALT Attribute"></cloudinary-img>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Face cropping (right without g_face)</h3>
+      <demo-snippet>
+        <template>
+          <cloudinary-img
+            cloud-name="euphorika"
+            path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg"
+            transformation-params="w_120,h_120,c_crop,g_face"
+            alt="Testing ALT Attribute"></cloudinary-img>
+          <cloudinary-img
+            cloud-name="euphorika"
+            path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg"
+            transformation-params="w_120,h_120,c_crop"
+            alt="Testing ALT Attribute"></cloudinary-img>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Auto responsive</h3>
+      <demo-snippet>
+        <template>
+          <cloudinary-img
+            cloud-name="euphorika"
+            path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg"
+            transformation-params="w_auto:100:400,dpr_auto"
+            sizes="50vw"
+            alt="Testing ALT Attribute"></cloudinary-img>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Format Conversion (left .png (transparent), right .jpg)</h3>
+      <demo-snippet>
+        <template>
+          <div style="background: black; padding: 5px;">
+            <cloudinary-img
+              cloud-name="euphorika"
+              path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg"
+              transformation-params="w_150,r_25"
+              file-format="png"
+              alt="Testing ALT Attribute"></cloudinary-img>&nbsp;
+            <cloudinary-img
+              cloud-name="euphorika"
+              path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg"
+              transformation-params="w_150,r_25"
+              alt="Testing ALT Attribute"></cloudinary-img>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Computeable Height (&lt;iron-list&gt;)</h3>
+      <demo-snippet>
+        <dom-bind>
+          <template>
+            <cloudinary-img
+              bind-load-event
+              cloud-name="euphorika"
+              path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg"
+              transformation-params="w_300"
+              alt="Testing ALT Attribute"
+              computable-height="{{computeableHeight}}"></cloudinary-img>
+            <div style="font-size: 30px; color: red;">Height Computable: [[computeableHeight]]</div>
+          </template>
+        </dom-bind>
       </demo-snippet>
     </div>
   </body>
