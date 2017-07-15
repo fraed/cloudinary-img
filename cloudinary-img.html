@@ -1,4 +1,4 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="cloudinary.html">
 
 <dom-module id="cloudinary-img">
@@ -24,11 +24,77 @@
 
   <script>
 
-    Polymer({
+    class CloudinaryImg extends Polymer.Element {
 
-      is: 'cloudinary-img',
+      static get is() {return 'cloudinary-img'}
 
-      ready: function() {
+      static get properties() {
+        return {
+          cloudinaryApi: {
+        		type: String,
+        		readOnly: true,
+        		value: '//res.cloudinary.com/'
+        	},
+
+        	cloudName: {
+        		type: String
+        	},
+
+          bindLoadEvent: {
+            type: Boolean
+          },
+
+          enableFallbackImg: { // useful for asynchronous fallbackImg Path
+            type: Boolean
+          },
+
+          computableHeight: { // useful for <iron-list>
+            type: Boolean,
+            notify: true
+          },
+
+        	path: {
+        		type: String
+        	},
+
+          fallbackImg: {
+            type: String
+          },
+
+        	transformationParams: {
+        		type: String,
+        		value: ''
+        	},
+
+        	alt: {
+        		type: String
+        	},
+
+        	sizes: {
+        		type: String,
+        		value: '100vw'
+        	},
+
+          fileFormat: {
+            type: String,
+            value: '' // http://cloudinary.com/documentation/image_transformations#image_format_conversion
+          },
+
+        	src: {
+        		type: String,
+        		notify: true,
+        		computed: '_computeSrc(cloudinaryApi, cloudName, path, transformationParams, fileFormat)'
+        	}
+        }
+      }
+
+      constructor() {
+        super();
+      }
+
+      ready() {
+        super.ready();
+
         if (this.bindLoadEvent) {
           this.$.cloudinaryImg.addEventListener('load', function() {
             this.set('computableHeight', true);
@@ -42,67 +108,9 @@
             imgElement.src = this.fallbackImg;
           }.bind(this));
         }
-      },
+      }
 
-      properties: {
-      	cloudinaryApi: {
-      		type: String,
-      		readOnly: true,
-      		value: '//res.cloudinary.com/'
-      	},
-
-      	cloudName: {
-      		type: String
-      	},
-
-        bindLoadEvent: {
-          type: Boolean
-        },
-
-        enableFallbackImg: { // useful for asynchronous fallbackImg Path
-          type: Boolean
-        },
-
-        computableHeight: { // useful for <iron-list>
-          type: Boolean,
-          notify: true
-        },
-
-      	path: {
-      		type: String
-      	},
-
-        fallbackImg: {
-          type: String
-        },
-
-      	transformationParams: {
-      		type: String,
-      		value: ''
-      	},
-
-      	alt: {
-      		type: String
-      	},
-
-      	sizes: {
-      		type: String,
-      		value: '100vw'
-      	},
-
-        fileFormat: {
-          type: String,
-          value: '' // http://cloudinary.com/documentation/image_transformations#image_format_conversion
-        },
-
-      	src: {
-      		type: String,
-      		notify: true,
-      		computed: '_computeSrc(cloudinaryApi, cloudName, path, transformationParams, fileFormat)'
-      	}
-      },
-
-      _computeSrc: function(cloudinaryApi, cloudName, path, transformationParams, fileFormat) {
+      _computeSrc(cloudinaryApi, cloudName, path, transformationParams, fileFormat) {
         if (!path) {
           return '';
         }
@@ -122,8 +130,9 @@
       	return src;
       }
 
-    });
+    }
 
+    window.customElements.define(CloudinaryImg.is, CloudinaryImg);
   </script>
 
 </dom-module>
