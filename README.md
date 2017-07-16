@@ -8,7 +8,7 @@ bower install cloudinary-img
 
 ## Usage
 
-Checkout demo file: demo/cloudinary-demo.html
+Checkout demo
 
 ## Contributing
 
