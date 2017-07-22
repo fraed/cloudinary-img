@@ -8,9 +8,30 @@ Polymer wrapper for cloudinary image service. http://cloudinary.com/
 
 bower install cloudinary-img
 
-## Usage
+## Demo
 
-Checkout demo
+<!--
+```
+<custom-element-demo>
+  <template>
+    <link rel="import" href="cloudinary-img.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<cloudinary-img
+  cloud-name="euphorika"
+  path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg"
+  transformation-params="r_10"
+  alt="Rounded Corners"></cloudinary-img>
+<cloudinary-img
+  cloud-name="euphorika"
+  path="v1479480680/klfsd9yhnvdcns4ti8w1.jpg"
+  transformation-params="w_120,h_120,c_crop,g_face"
+  alt="Face Finding"></cloudinary-img>
+```
 
 ## Contributing
 
